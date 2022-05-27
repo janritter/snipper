@@ -2,10 +2,13 @@
 
 [![CircleCI](https://circleci.com/gh/janritter/snipper/tree/main.svg?style=svg)](https://circleci.com/gh/janritter/snipper/tree/main)
 
-> Tool to get various snippets directly from your CLI
+> Tool to get code / config snippets from various collections
 
-## Prerequisites
-- TODO
+> **Warning**
+> This project is still in the very early alpha phase and currently more like a proof of concept of the idea. Please expect breaking changes and changes in functionality for versions below 1.0.0.
+
+## Prerequisites for development
+- Golang 1.18
 
 ## Installation via go
 

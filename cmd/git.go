@@ -43,12 +43,12 @@ func checkOrCloneRepo(gitUrl string, path string) {
 }
 
 func updateRepo(gitUrl string, path string) {
+	fmt.Println("Updating local snipper collection at " + path)
 	repo, err := git.PlainOpen(path)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Local copy found, updating...")
 	w, err := repo.Worktree()
 	if err != nil {
 		log.Fatal(err)
@@ -60,4 +60,5 @@ func updateRepo(gitUrl string, path string) {
 	if err != nil && err != git.NoErrAlreadyUpToDate {
 		log.Fatal(err)
 	}
+	fmt.Println("Snipper collection updated")
 }

@@ -1,0 +1,8 @@
+# Go mod
+vendor/*
+
+# Build
+bin/*
+
+# vscode
+.vscode/*

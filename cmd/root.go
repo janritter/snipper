@@ -50,12 +50,18 @@ var rootCmd = &cobra.Command{
 	Use:   "snipper",
 	Short: "Tool to get various snippets directly from your CLI",
 	Run: func(cmd *cobra.Command, args []string) {
-		repo := args[0]
-		path := "/tmp/" + repo
+		if len(args) <= 2 {
+			fmt.Println("At least two args (provider url and snippet) are required, multiple snippet args for nested collections are supported")
+			fmt.Println("Example: snipper gh:username/snipper-collection terraform state s3")
+			os.Exit(1)
+		}
 
-		pathElements := args[1:]
+		gitUrl, repo := getGitUrlParts(args[0])
+		path := "/tmp/snipper/" + repo
 
-		path = path + "/" + strings.Join(pathElements, "/")
+		checkOrCloneRepo(gitUrl, path)
+
+		path = path + "/" + strings.Join(args[1:], "/")
 		filePath := path + ".md"
 
 		// Check if file exists

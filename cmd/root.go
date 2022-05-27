@@ -87,7 +87,13 @@ var rootCmd = &cobra.Command{
 					renderOutputAppendSnippet(path + "/" + filenames[0])
 				}
 
-				helper.GetList(filenames)
+				choice := helper.GetList(filenames)
+
+				if choice == "" {
+					os.Exit(0)
+				}
+
+				renderOutputAppendSnippet(path + "/" + choice)
 
 				os.Exit(0)
 			}

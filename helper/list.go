@@ -21,6 +21,8 @@ var (
 	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4)
 )
 
+var finalChoice string
+
 type item string
 
 func (i item) FilterValue() string { return "" }
@@ -87,15 +89,16 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m model) View() string {
 	if m.choice != "" {
-		return quitTextStyle.Render(fmt.Sprintf("%s? Sounds good to me.", m.choice))
+		finalChoice = m.choice
+		return quitTextStyle.Render(fmt.Sprintf("Selected snippet %s", m.choice))
 	}
 	if m.quitting {
-		return quitTextStyle.Render("Not hungry? That’s cool.")
+		return quitTextStyle.Render("No snippet selected.")
 	}
 	return "\n" + m.list.View()
 }
 
-func GetList(filenames []string) {
+func GetList(filenames []string) string {
 	items := []list.Item{}
 
 	for _, filename := range filenames {
@@ -118,4 +121,6 @@ func GetList(filenames []string) {
 		fmt.Println("Error running program:", err)
 		os.Exit(1)
 	}
+
+	return finalChoice
 }

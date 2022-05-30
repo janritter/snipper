@@ -39,6 +39,15 @@ brew tap janritter/snipper https://github.com/janritter/snipper
 brew install snipper
 ```
 
+## Additional steps for private repositories
+
+To fix cloning errors when trying to use private repos as snipper collections, execute the following commands:
+
+```bash
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+ssh-keyscan -t ecdsa github.com >> ~/.ssh/known_hosts
+```
+
 ## Usage
 
 ### Run

@@ -50,9 +50,16 @@ ssh-keyscan -t ecdsa github.com >> ~/.ssh/known_hosts
 
 ## Usage
 
-### Run
+### Run help
+
 ```bash
 snipper
+```
+
+### Get snippet - Terraform S3 state backend
+
+```bash
+snipper get gh:janritter/snipper-collection terraform state s3
 ```
 
 ## License and Author
